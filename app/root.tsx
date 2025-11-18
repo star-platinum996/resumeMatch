@@ -10,7 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import {usePuterStore} from "~/lib/puter";
-import {useEffect, useCallback} from "react";
+import {useEffect} from "react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -28,18 +28,9 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   const { init } = usePuterStore();
 
-  // Memoize init function to prevent unnecessary re-renders
-  const handleInit = useCallback(() => {
-    try {
-      init();
-    } catch (error) {
-      console.error('Failed to initialize Puter:', error);
-    }
-  }, [init]);
-
   useEffect(() => {
-    handleInit();
-  }, [handleInit]);
+    init()
+  }, [init]);
 
   return (
     <html lang="en">
@@ -77,9 +68,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
-  } else if (error instanceof Error) {
-    // Provide safe error message in production
-    details = "Something went wrong. Please try again later.";
   }
 
   return (
