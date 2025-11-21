@@ -12,7 +12,7 @@ const Upload = () => {
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
-    const [file, setFile] = useState<File
+    const [file, setFile] = useState<File | null>(null);
 
     const handleFileSelect = (file: File | null) => {
         setFile(file)
