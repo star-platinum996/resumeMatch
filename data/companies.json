@@ -1,0 +1,80 @@
+[
+  {
+    "companyName": "Microsoft",
+    "jobs": [
+      {
+        "jobTitle": "Senior Cloud Solutions Architect",
+        "jobDescription": "Design and implement enterprise-scale cloud infrastructure solutions using Azure services. Lead technical engagements with Fortune 500 clients, develop architecture frameworks, and ensure compliance with security standards. Requires 8+ years of experience in cloud computing and industry certifications."
+      },
+      {
+        "jobTitle": "Data Science Lead",
+        "jobDescription": "Lead cross-functional teams in developing machine learning solutions for business intelligence. Responsibilities include building predictive models, implementing MLOps pipelines, and translating complex data insights into strategic recommendations. PhD in quantitative field preferred with 5+ years industry experience."
+      }
+    ]
+  },
+  {
+    "companyName": "J.P. Morgan Chase & Co.",
+    "jobs": [
+      {
+        "jobTitle": "Investment Banking Analyst",
+        "jobDescription": "Execute financial modeling and valuation analysis for M&A transactions. Prepare client pitch materials, conduct industry research, and support due diligence processes. Bachelor's degree in Finance or related field with demonstrated analytical capabilities and 2+ years in financial services."
+      },
+      {
+        "jobTitle": "Cybersecurity Specialist",
+        "jobDescription": "Implement and maintain security controls for global financial systems. Monitor threat intelligence, conduct vulnerability assessments, and ensure regulatory compliance with FINRA and SOX requirements. CISM/CISSP certification required with banking sector experience."
+      }
+    ]
+  },
+  {
+    "companyName": "Tesla",
+    "jobs": [
+      {
+        "jobTitle": "Autopilot Systems Engineer",
+        "jobDescription": "Develop perception algorithms for autonomous driving systems. Integrate sensor fusion data from cameras and radar, validate system performance through simulation and real-world testing. MS/PhD in Robotics or Computer Vision with 3+ years autonomous systems experience."
+      },
+      {
+        "jobTitle": "Battery Manufacturing Director",
+        "jobDescription": "Oversend Gigafactory production operations for lithium-ion battery packs. Implement lean manufacturing principles, optimize supply chain logistics, and drive quality control initiatives. Engineering degree with 10+ years automotive manufacturing leadership."
+      }
+    ]
+  },
+  {
+    "companyName": "McKinsey & Company",
+    "jobs": [
+      {
+        "jobTitle": "Management Consultant",
+        "jobDescription": "Lead strategic initiatives for C-suite clients across healthcare and technology sectors. Conduct market analysis, develop growth strategies, and facilitate organizational transformation. MBA from top-tier institution with proven problem-solving capabilities and 3+ years consulting experience."
+      },
+      {
+        "jobTitle": "Digital Transformation Specialist",
+        "jobDescription": "Advise clients on technology modernization roadmaps and AI implementation strategies. Assess operational maturity, design agile workflows, and measure ROI on digital investments. Background in technology consulting with cloud migration expertise."
+      }
+    ]
+  },
+  {
+    "companyName": "Pfizer",
+    "jobs": [
+      {
+        "jobTitle": "Clinical Research Director",
+        "jobDescription": "Oversee global Phase III clinical trials for novel therapeutics. Ensure protocol compliance, manage investigator relationships, and prepare regulatory submissions to FDA/EMA. MD/PhD in Life Sciences with 7+ years pharmaceutical research experience."
+      },
+      {
+        "jobTitle": "Pharmaceutical Manufacturing Manager",
+        "jobDescription": "Manage cGMP compliant production facilities for biologic medicines. Implement quality by design (QbD) principles, optimize purification processes, and lead FDA audit preparations. Chemical Engineering background with biopharma experience required."
+      }
+    ]
+  },
+  {
+    "companyName": "Apple",
+    "jobs": [
+      {
+        "jobTitle": "iOS Framework Engineer",
+        "jobDescription": "Architect core frameworks for upcoming iOS releases. Develop Swift-based APIs, optimize memory management, and collaborate with hardware teams on chip-level integration. 5+ years native iOS development with deep understanding of Cocoa Touch."
+      },
+      {
+        "jobTitle": "Supply Chain Analytics Manager",
+        "jobDescription": "Develop predictive models for global component inventory management. Analyze supplier risk, optimize logistics networks, and implement machine learning solutions for demand forecasting. BS/MS in Operations Research with SAP implementation experience."
+      }
+    ]
+  }
+]
