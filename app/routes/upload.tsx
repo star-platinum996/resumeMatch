@@ -6,6 +6,7 @@ import {useNavigate} from "react-router";
 import {convertPdfToImage} from "~/lib/pdf2img";
 import {generateUUID} from "~/lib/utils";
 import {prepareInstructions} from "../../constants";
+import companies from "../../data/companies.json";
 
 const Upload = () => {
     const { auth, isLoading, fs, ai, kv } = usePuterStore();
@@ -13,12 +14,12 @@ const Upload = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
     const [file, setFile] = useState<File | null>(null);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedCompany, setSelectedCompany] = useState<any>(null);
 
     const handleFileSelect = (file: File | null) => {
         setFile(file)
     }
-
-
 
     const handleAnalyze = async ({ companyName, jobTitle, jobDescription, file }: { companyName: string, jobTitle: string, jobDescription: string, file: File  }) => {
         setIsProcessing(true);
@@ -109,6 +110,13 @@ const Upload = () => {
                                     >
                                         Not having a target yet? Go through LinkedIn.
                                     </a>
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowModal(true)}
+                                        className="text-sm ml-4 px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
+                                    >
+                                        Or Choose our jobs
+                                    </button>
                                 </div>
                                 <input type="text" name="company-name" placeholder="Company Name" id="company-name" />
                             </div>
@@ -133,6 +141,80 @@ const Upload = () => {
                     )}
                 </div>
             </section>
+            {showModal && (
+                <div className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50">
+                    <div
+                        className="w-96 p-6 rounded-2xl shadow-2xl animate-fade-in bg-cover bg-center relative"
+                        style={{
+                            backgroundImage: "url('/images/bg-main.svg')",
+                        }}
+                    >
+                        <div className="backdrop-blur-md bg-white/70 rounded-xl p-4 shadow-lg">
+                            <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">
+                                Select a Company
+                            </h2>
+
+                            {/* Company list */}
+                            <div className="flex flex-col gap-3 max-h-80 overflow-y-auto">
+                                {companies.map((c) => (
+                                    <div
+                                        key={c.companyName}
+                                        className="border border-gray-300 p-3 rounded-lg bg-white/70 backdrop-blur-sm hover:bg-white/90 cursor-pointer transition"
+                                        onClick={() => setSelectedCompany(c)}
+                                    >
+                                        <p className="font-bold text-gray-800">{c.companyName}</p>
+                                        <p className="text-sm text-gray-600">{c.jobs.length} positions</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Job list */}
+                            {selectedCompany && (
+                                <div className="mt-4">
+                                    <h3 className="text-lg font-semibold text-gray-800 text-center">
+                                        {selectedCompany.companyName} Jobs
+                                    </h3>
+
+                                    <div className="flex flex-col gap-3 mt-2 max-h-60 overflow-y-auto">
+                                        {selectedCompany.jobs.map((job, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="border border-gray-300 p-3 rounded-lg bg-white/70 backdrop-blur-sm hover:bg-indigo-100 cursor-pointer transition"
+                                                onClick={() => {
+                                                    (document.getElementById("company-name") as HTMLInputElement).value =
+                                                        selectedCompany.companyName;
+
+                                                    (document.getElementById("job-title") as HTMLInputElement).value =
+                                                        job.jobTitle;
+
+                                                    (document.getElementById("job-description") as HTMLTextAreaElement).value =
+                                                        job.jobDescription;
+
+                                                    setShowModal(false);
+                                                }}
+                                            >
+                                                <p className="font-bold text-gray-800">{job.jobTitle}</p>
+                                                <p className="text-sm text-gray-600">
+                                                    {job.jobDescription.slice(0, 80)}...
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Close button */}
+                            <button
+                                className="mt-5 w-full py-2 rounded-lg bg-indigo-200 hover:bg-indigo-300 text-indigo-700 font-semibold transition"
+                                onClick={() => setShowModal(false)}
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </main>
     )
 }
